@@ -1,0 +1,1 @@
+python3 /home/spaits/repo/NoVCS/ProgramSlicing/Slicers/LlvmSlicer/llvm-slicer-wrapper.py -f tiny-jsonModEntry.c -e objValue -c '473:c'

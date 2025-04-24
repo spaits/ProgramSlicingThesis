@@ -1,0 +1,41 @@
+/home/spaits/repo/NoVCS/ProgramSlicing/Slicers/LlvmSlicer/llvm-slicer-wrapper.py -f stb_perlinCut.c -e stb_perlin_noise3_wrap_nonpow2 -c '294:n000' -l
+Warning: Empty PHI
+PSNodeType::PHI with ID 5
+  - operands: []
+Warning: Empty PHI
+PSNodeType::PHI with ID 6
+  - operands: []
+Warning: Empty PHI
+PSNodeType::PHI with ID 7
+  - operands: []
+Warning: Empty PHI
+PSNodeType::PHI with ID 8
+  - operands: []
+Warning: Empty PHI
+PSNodeType::PHI with ID 9
+  - operands: []
+Warning: Empty PHI
+PSNodeType::PHI with ID 10
+  - operands: []
+Warning: Empty PHI
+PSNodeType::PHI with ID 11
+  - operands: []
+Matched line 294 with variable n000 to:
+  %321 = load float, float* %18, align 4, !dbg !315
+[llvm-slicer] CPU time of pointer analysis: 7.324000e-03 s
+[llvm-slicer] CPU time of reaching definitions analysis: 1.763000e-03 s
+[llvm-slicer] CPU time of control dependence analysis: 1.400000e-04 s
+[llvm-slicer] Finding dependent nodes took 0 sec 0 ms
+[llvm-slicer] Slicing dependence graph took 0 sec 0 ms
+[llvm-slicer] Sliced away 136 from 479 nodes in DG
+[llvm-slicer] saving sliced module to: bitcode.sliced
+Starting slicing.
+Source:  stb_perlinCut.c
+Entry:  stb_perlin_noise3_wrap_nonpow2
+Slicing criteria:  294:n000
+Successful compilation!
+['/opt/dg/tools/llvm-slicer', '--pta=fs', '--cda=classic', '--undefined-funs=rw-any', '-entry', 'stb_perlin_noise3_wrap_nonpow2', '-c', '294:n000', 'bitcode.bc']
+Successful slicing!
+Successful disassembly!
+[294, 292, 291, 290, 289, 288, 287, 286, 285, 283, 282, 281, 280, 278, 277, 276, 275, 273, 272, 271, 267, 266, 265, 264, 263, 262, 260, 259, 258, 257, 256, 255, 254, 253, 252, 236, 120, 119, 103, 101, 98, 97, 95, 53, 14]
+DONE

@@ -1,0 +1,1 @@
+/home/spaits/repo/NoVCS/ProgramSlicing/Slicers/LlvmSlicer/llvm-slicer-wrapper.py -f stb_perlinCut.c -e stb_perlin_noise3_wrap_nonpow2 -c '294:n000' -l

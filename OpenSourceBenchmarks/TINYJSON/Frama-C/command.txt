@@ -1,0 +1,1 @@
+frama-c -eva -kernel-warn-key CERT:MSC:38=inactive -main objValue tiny-jsonModEntryNoHeaders.c -slice-pragma objValue -slicing-level=2   -then-on 'Slicing export' -print > tmp.c

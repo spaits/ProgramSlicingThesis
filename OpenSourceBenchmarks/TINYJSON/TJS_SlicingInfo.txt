@@ -1,0 +1,15 @@
+file       : tiny-jsonModEntry.c
+line       : 473
+expression : ptr
+statement  : ++ptr;
+entry      : objValue
+tools using this file: Unravel, LLVM-Slicer
+
+file       : tiny-jsonModEntryNoHeaders.c
+line       : 473
+expression : ptr
+statement  : ++ptr;
+entry      : objValue
+tools using this file: Frama-C
+
+commit hash: 025cdde5f2574290d8b2a8524bc257db2829bb7c

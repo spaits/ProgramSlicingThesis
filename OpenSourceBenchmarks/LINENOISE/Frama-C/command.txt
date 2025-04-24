@@ -1,0 +1,1 @@
+frama-c -eva -kernel-warn-key CERT:MSC:38=inactive -main refreshMultiLine linenoiseNoStdDef.c -slice-pragma refreshMultiLine -slicing-level=2   -then-on 'Slicing export' -print

@@ -1,0 +1,16 @@
+Not in docker:
+docker run -it -u 0 -v `pwd`:/ExamplePrograms mchalupa/dg
+
+
+In docker:
+cd ExamplePrograms
+clang -c -g -O0 -emit-llvm linenoiseModEntryCut.c -o bitcode.bc
+llvm-slicer --pta=fs  --statistics -entry refreshMultiLine -c '658:ab' bitcode.bc
+llvm-dis bitcode.sliced
+
+Not in docker:
+python3 llvmSlicerExtracter.py
+
+Or just
+
+/home/spaits/repo/NoVCS/ProgramSlicing/Slicers/LlvmSlicer/llvm-slicer-wrapper.py -f linenoiseModEntryCut.c -c '658:ab' -e refreshMultiLine

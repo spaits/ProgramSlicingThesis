@@ -1,0 +1,25 @@
+- File: ConcreteValuePropagation.c
+    - Unravel: Failed
+    - Frama-C: Passed
+    - LLVM-Slicer: Failed
+    - Clang-Symbolic-Slicer : Passed
+- File: LoopBreak.c
+    - Unravel: Failed
+    - Frama-C: Passed
+    - LLVM-Slicer: Passed
+    - Clang-Symbolic-Slicer : Passed
+- File: LoopBreakContinue.c (Because of the continue statement in after the slicing criteria, the break statement could never precede the slicing criteria, hence it couldn't influence any value init.)
+    - Unravel: Failed (Due to previous failure)
+    - Frama-C: Failed
+    - LLVM-Slicer: Failed
+    - Clang-Symbolic-Slicer : Passed
+- File: UnfeasiblePath.c
+    - Unravel: Passed
+    - Frama-C: Passed
+    - LLVM-Slicer: Passed
+    - Clang-Symbolic-Slicer : Passed
+- File: UnfeasiblePathImplied.c
+    - Unravel: Failed
+    - Frama-C: Failed
+    - LLVM-Slicer: Failed
+    - Clang-Symbolic-Slicer : Passed

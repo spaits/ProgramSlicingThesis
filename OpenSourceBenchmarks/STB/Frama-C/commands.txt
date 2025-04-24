@@ -1,0 +1,1 @@
+frama-c -eva -kernel-warn-key CERT:MSC:38=inactive -main stb_perlin_noise3_wrap_nonpow2 stb_perlin.c -slice-pragma stb_perlin_noise3_wrap_nonpow2 -slicing-level=2   -then-on 'Slicing export' -print

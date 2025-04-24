@@ -1,0 +1,10 @@
+- File: FunctionCall.c
+    - Unravel: Passed
+    - Frama-C: Passed
+    - LLVM-Slicer: Passed
+    - Clang-Slicer: Passed
+- File: IndirectFunctionCall.c
+    - Unravel: Failed
+    - Frama-C: Passed
+    - LLVM-Slicer: Passed
+    - Clang-Slicer: Passed

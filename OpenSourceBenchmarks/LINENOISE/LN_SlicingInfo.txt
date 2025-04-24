@@ -1,0 +1,17 @@
+file       : linenoiseModEntryCut.c
+line       : 658
+expression : ab
+statement  : abAppend(&ab,l->buf,l->len);
+entry      : refreshMultiLine
+tools using this file: Unravel, LLVM-Slicer
+
+
+file       : lineNoiseNoStdDef.c
+line       : 658
+expression : ab
+statement  : abAppend(&ab,l->buf,l->len);
+entry      : refreshMultiLine
+tools using this file: Frama-C
+
+
+commit hash: d895173d679be70bcd8b23041fff3e458e1a3506

@@ -1,0 +1,16 @@
+file       : stb_perlin.c
+line       : 294
+expression : n000
+statement  : n00 = stb__perlin_lerp(n000,n001,w);
+entry      : stb_perlin_noise3_wrap_nonpow2
+tools using this file: LLVM-SLicer, Frama-C
+
+file       : stb_perlinCut.c
+line       : 294
+expression : n000
+statement  : n00 = stb__perlin_lerp(n000,n001,w);
+entry      : stb_perlin_noise3_wrap_nonpow2
+tools using this file: Unravel
+
+
+commit hash: 5c205738c191bcb0abc65c4febfa9bd25ff35234
