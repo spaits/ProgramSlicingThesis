@@ -490,19 +490,19 @@ char* objValue( char* ptr, json_t* obj, jsonPool_t* pool ) {
                 property->sibling = obj;
                 obj = property;
                 ++ptr;
-                break;
+                return 0;
             case '[':
                 property->type    = JSON_ARRAY;
                 property->u.c.child = 0;
                 property->sibling = obj;
                 obj = property;
                 ++ptr;
-                break;
-            case '\"': ptr = textValue( ptr, property );  break;
-            case 't':  ptr = trueValue( ptr, property );  break;
-            case 'f':  ptr = falseValue( ptr, property ); break;
-            case 'n':  ptr = nullValue( ptr, property );  break;
-            default:   ptr = numValue( ptr, property );   break;
+                return 0;
+            case '\"': ptr = textValue( ptr, property );  return 0;
+            case 't':  ptr = trueValue( ptr, property );  return 0;
+            case 'f':  ptr = falseValue( ptr, property ); return 0;
+            case 'n':  ptr = nullValue( ptr, property );  return 0;
+            default:   ptr = numValue( ptr, property );   return 0;
         }
         if ( !ptr ) return 0;
     }
