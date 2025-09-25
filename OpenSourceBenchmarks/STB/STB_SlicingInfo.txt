@@ -3,7 +3,7 @@ line       : 294
 expression : n000
 statement  : n00 = stb__perlin_lerp(n000,n001,w);
 entry      : stb_perlin_noise3_wrap_nonpow2
-tools using this file: LLVM-SLicer, Frama-C
+tools using this file: LLVM-SLicer, Frama-C, Clang Symbolic Slicer
 
 file       : stb_perlinCut.c
 line       : 294

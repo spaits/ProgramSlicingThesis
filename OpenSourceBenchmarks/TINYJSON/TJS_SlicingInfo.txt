@@ -3,7 +3,7 @@ line       : 473
 expression : ptr
 statement  : ++ptr;
 entry      : objValue
-tools using this file: Unravel, LLVM-Slicer
+tools using this file: Unravel, LLVM-Slicer, Clang Symbolic Slicer
 
 file       : tiny-jsonModEntryNoHeaders.c
 line       : 473

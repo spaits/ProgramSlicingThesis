@@ -3,7 +3,7 @@ line       : 658
 expression : ab
 statement  : abAppend(&ab,l->buf,l->len);
 entry      : refreshMultiLine
-tools using this file: Unravel, LLVM-Slicer
+tools using this file: Unravel, LLVM-Slicer, Clang Symbolic Slicer
 
 
 file       : lineNoiseNoStdDef.c
