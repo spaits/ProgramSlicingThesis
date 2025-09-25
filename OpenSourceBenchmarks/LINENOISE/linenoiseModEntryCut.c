@@ -495,16 +495,16 @@ struct abuf {
 };
 
 static void abInit(struct abuf *ab) {
-    ab->b = NULL;
-    ab->len = 0;
+    ab->b = NULL;/* LN_SP4 */
+    ab->len = 0;/* LN_SP4 */
 }
 
 static void abAppend(struct abuf *ab, const char *s, int len) {
-    char *new = realloc(ab->b,ab->len+len);
+    char *new = realloc(ab->b,ab->len+len);/* LN_SP4 */
 
-    if (new == NULL) return;
-    memcpy(new+ab->len,s,len);
-    ab->b = new;
+    if (new == NULL) return;/* LN_SP4 */
+    memcpy(new+ab->len,s,len);/* LN_SP4 */
+    ab->b = new;/* LN_SP4 */
     ab->len += len;
 }
 
@@ -605,7 +605,7 @@ void refreshMultiLine(struct linenoiseState *l, int flags) {
     char seq[64];
     int plen;
     int rows; /* rows used by current buf. */
-    int rpos; /* cursor relative row. */
+    int rpos; /* cursor relative row. *//* LN_SP4 */
     int rpos2; /* rpos after refresh. */
     int col; /* colum position, zero-based. */
     int old_rows;
@@ -613,43 +613,43 @@ void refreshMultiLine(struct linenoiseState *l, int flags) {
     int j;
     struct abuf ab;
 
-    plen = strlen(l->prompt);
+    plen = strlen(l->prompt);/* LN_SP4 */
     rows = (plen+l->len+l->cols-1)/l->cols;
-    rpos = (plen+l->oldpos+l->cols)/l->cols;
-    old_rows = l->oldrows;
+    rpos = (plen+l->oldpos+l->cols)/l->cols;/* LN_SP4 */
+    old_rows = l->oldrows;/* LN_SP4 */
     fd = l->ofd;
 
     l->oldrows = rows;
 
     /* First step: clear all the lines used before. To do so start by
      * going to the last row. */
-    abInit(&ab);
+    abInit(&ab);/* LN_SP4 */
 
-    if (flags & REFRESH_CLEAN) {
-        if (old_rows-rpos > 0) {
+    if (flags & REFRESH_CLEAN) {/* LN_SP4 */
+        if (old_rows-rpos > 0) {/* LN_SP4 */
             lndebug("go down %d", old_rows-rpos);
             snprintf(seq,64,"\x1b[%dB", old_rows-rpos);
-            abAppend(&ab,seq,strlen(seq));
+            abAppend(&ab,seq,strlen(seq));/* LN_SP4 */
         }
 
         /* Now for every row clear it, go up. */
-        for (j = 0; j < old_rows-1; j++) {
+        for (j = 0; j < old_rows-1; j++) {/* LN_SP4 */
             lndebug("clear+up");
-            snprintf(seq,64,"\r\x1b[0K\x1b[1A");
-            abAppend(&ab,seq,strlen(seq));
+            snprintf(seq,64,"\r\x1b[0K\x1b[1A");/* LN_SP4 */
+            abAppend(&ab,seq,strlen(seq));/* LN_SP4 */
         }
     }
 
-    if (flags & REFRESH_ALL) {
+    if (flags & REFRESH_ALL) {/* LN_SP4 */
         /* Clean the top line. */
         lndebug("clear");
-        snprintf(seq,64,"\r\x1b[0K");
-        abAppend(&ab,seq,strlen(seq));
+        snprintf(seq,64,"\r\x1b[0K");/* LN_SP4 */
+        abAppend(&ab,seq,strlen(seq)); /* LN_SP4 */
     }
 
-    if (flags & REFRESH_WRITE) {
+    if (flags & REFRESH_WRITE) { /* LN_SP4 */
         /* Write the prompt and the current buffer content */
-        abAppend(&ab,l->prompt,strlen(l->prompt));
+        abAppend(&ab,l->prompt,strlen(l->prompt)); /* LN_SP4 */
         if (maskmode == 1) {
             unsigned int i;
             for (i = 0; i < l->len; i++) abAppend(&ab,"*",1);
