@@ -1,9 +1,9 @@
 # The results are recorded in this script.
 def compare_to_ideal(name, tool, result, ideal):
-    print('Perfect slice length for ', name, ':', len(ideal))
-    print('Slice produced by', tool, 'for', name, 'is:', len(result))
     idealAsSet = set(ideal)
     resultsAsSet = set(result)
+    print('Perfect slice length for ', name, ':', len(idealAsSet))
+    print('Slice produced by', tool, 'for', name, 'is:', len(resultsAsSet))
     redundant_statements = list(resultsAsSet - idealAsSet)
     missing_statements = list(idealAsSet - resultsAsSet)
     print('Redundant statements:', len(redundant_statements))
