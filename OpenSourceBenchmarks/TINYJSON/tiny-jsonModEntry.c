@@ -473,38 +473,38 @@ char* objValue( char* ptr, json_t* obj, jsonPool_t* pool ) {
             ++ptr; /*TJS_SP1*/
             continue; /*TJS_SP1*/
         }
-        property = pool->alloc( pool );
+        property = pool->alloc( pool ); /*TJS_SP1*/
         if ( !property ) return 0;
-        if( obj->type != JSON_ARRAY ) {
-            if ( *ptr != '\"' ) return 0;
-            ptr = propertyName( ptr, property ); // This should be unreachable for the slice: if ptr is zero we are returning. Else we are continuing and we will certainly run onto a break in the case.
-            if ( !ptr ) return 0;
+        if( obj->type != JSON_ARRAY ) { /*TJS_SP1*/
+            if ( *ptr != '\"' ) return 0; /*TJS_SP1*/
+            ptr = propertyName( ptr, property ); /*TJS_SP1*/ // This should be unreachable for the slice: if ptr is zero we are returning. Else we are continuing and we will certainly run onto a break in the case.
+            if ( !ptr ) return 0; /*TJS_SP1*/
         }
         else property->name = 0;
         add( obj, property );
         property->u.value = ptr;
-        switch( *ptr ) { // At this point we are sure, that the ptr is not zero. It cannot be: If it was zero at loop beginning, then line 461 would have taken care of it! Branch in line 462 only increments the pointer. Won't be zero. Same goes for branch 466. In branch 480 line 482 assignment may set the ptr to zero, but immediately in line 483 we return in the nullptr case. Thus at this point prt could never be a null pointer.
-            case '{':
-                property->type    = JSON_OBJ;
+        switch( *ptr ) { /*TJS_SP1*/
+            case '{': /*TJS_SP1*/
+                property->type    = JSON_OBJ; /*TJS_SP1*/
                 property->u.c.child = 0;
                 property->sibling = obj;
                 obj = property;
-                ++ptr;
+                ++ptr; /*TJS_SP1*/
                 break;
-            case '[':
-                property->type    = JSON_ARRAY;
+            case '[': /*TJS_SP1*/
+                property->type    = JSON_ARRAY; /*TJS_SP1*/
                 property->u.c.child = 0;
                 property->sibling = obj;
                 obj = property;
-                ++ptr;
+                ++ptr; /*TJS_SP1*/
                 break;
-            case '\"': ptr = textValue( ptr, property );  break;
-            case 't':  ptr = trueValue( ptr, property );  break;
-            case 'f':  ptr = falseValue( ptr, property ); break;
-            case 'n':  ptr = nullValue( ptr, property );  break;
-            default:   ptr = numValue( ptr, property );   break;
+            case '\"': ptr = textValue( ptr, property );  break; /*TJS_SP1*/
+            case 't':  ptr = trueValue( ptr, property );  break; /*TJS_SP1*/
+            case 'f':  ptr = falseValue( ptr, property ); break; /*TJS_SP1*/
+            case 'n':  ptr = nullValue( ptr, property );  break; /*TJS_SP1*/
+            default:   ptr = numValue( ptr, property );   break; /*TJS_SP1*/
         }
-        if ( !ptr ) return 0;
+        if ( !ptr ) return 0; /*TJS_SP1*/
     }
 }
 
@@ -543,11 +543,11 @@ char* objValue( char* ptr, json_t* obj, jsonPool_t* pool ) {
   * @param set Set of characters. It is just a null-terminated string.
   * @return The final pointer value or null pointer if the null character was found. */
  char* goWhile( char* str, char const* set ) {
-    for(; *str != '\0'; ++str ) { /*TJS_SP4 */
-        if ( !isOneOfThem( *str, set ) ) /*TJS_SP4 */
-            return str; /*TJS_SP4 */
+    for(; *str != '\0'; ++str ) { /*TJS_SP1 */
+        if ( !isOneOfThem( *str, set ) ) /*TJS_SP1 */
+            return str; /*TJS_SP1 */
     }
-    return 0; /*TJS_SP4 */
+    return 0; /*TJS_SP1 */
 }
 
 /** Set of characters that defines a blank. */
@@ -557,7 +557,7 @@ char* objValue( char* ptr, json_t* obj, jsonPool_t* pool ) {
   * @param str The initial pointer value.
   * @return The final pointer value or null pointer if the null character was found. */
 char* goBlank( char* str ) {
-    return goWhile( str, blank ); /*TJS_SP4 */
+    return goWhile( str, blank ); /*TJS_SP1 */
 }
 
 /** Increases a pointer while it points to a decimal digit character.
