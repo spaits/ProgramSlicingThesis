@@ -1,0 +1,5 @@
+cp ../stb_perlinCut.c ./stb.c
+
+clang -c --analyze stb.c -Xclang -analyzer-checker=alpha.core.SlicingCriterion -Xclang -analyzer-config -Xclang alpha.core.SlicingCriterion:LineNumber=294 -Xclang -analyzer-config -Xclang alpha.core.SlicingCriterion:ExpressionName="n000" -Xclang -analyzer-output=html -o htmloutput -Xclang -analyzer-disable-checker=optin 2>&1 | grep Executed | sort | uniq | awk '{print $1}' > stb_lines.txt
+
+sed -n -f <(sed 's/$/p/' stb_lines.txt) stb.c > symbolic_slice_stb.c

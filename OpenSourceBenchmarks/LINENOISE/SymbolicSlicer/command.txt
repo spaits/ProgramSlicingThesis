@@ -1,0 +1,5 @@
+cp ../linenoiseModEntryCut.c ./linenoise.c
+
+clang -c --analyze linenoise.c -Xclang -analyzer-checker=alpha.core.SlicingCriterion -Xclang -analyzer-config -Xclang alpha.core.SlicingCriterion:LineNumber=658 -Xclang -analyzer-config -Xclang alpha.core.SlicingCriterion:ExpressionName="ab" -Xclang -analyzer-output=html -o htmloutput -Xclang -analyzer-disable-checker=optin 2>&1 | grep Executed | sort | uniq | awk '{print $1}' > linenoise_lines.txt
+
+sed -n -f <(sed 's/$/p/' linenoise_lines.txt) linenoise.c > symbolic_slice_linenoise.c
