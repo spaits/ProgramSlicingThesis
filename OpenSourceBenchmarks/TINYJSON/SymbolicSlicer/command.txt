@@ -1,0 +1,5 @@
+cp ../tiny-jsonModEntry.c ./tiny-json.c
+
+clang -c --analyze tiny-json.c -Xclang -analyzer-checker=alpha.core.SlicingCriterion -Xclang -analyzer-config -Xclang alpha.core.SlicingCriterion:LineNumber=473 -Xclang -analyzer-config -Xclang alpha.core.SlicingCriterion:ExpressionName="ptr" -Xclang -analyzer-output=html -o htmloutput -Xclang -analyzer-disable-checker=optin 2>&1 | grep Executed | sort | uniq | awk '{print $1}' > tinyjson_lines.txt
+
+sed -n -f <(sed 's/$/p/' tinyjson_lines.txt) tiny-json.c > symbolic_slice_tinyjson.c
