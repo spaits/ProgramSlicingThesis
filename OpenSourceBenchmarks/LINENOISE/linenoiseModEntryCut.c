@@ -505,7 +505,7 @@ static void abAppend(struct abuf *ab, const char *s, int len) {
     if (new == NULL) return;/* LN_SP4 */
     memcpy(new+ab->len,s,len);/* LN_SP4 */
     ab->b = new;/* LN_SP4 */
-    ab->len += len;
+    ab->len += len;/* LN_SP4 */
 }
 
 static void abFree(struct abuf *ab) {
@@ -605,7 +605,7 @@ void refreshMultiLine(struct linenoiseState *l, int flags) {
     char seq[64];
     int plen;
     int rows; /* rows used by current buf. */
-    int rpos; /* cursor relative row. *//* LN_SP4 */
+    int rpos; /* cursor relative row. */
     int rpos2; /* rpos after refresh. */
     int col; /* colum position, zero-based. */
     int old_rows;
@@ -628,7 +628,7 @@ void refreshMultiLine(struct linenoiseState *l, int flags) {
     if (flags & REFRESH_CLEAN) {/* LN_SP4 */
         if (old_rows-rpos > 0) {/* LN_SP4 */
             lndebug("go down %d", old_rows-rpos);
-            snprintf(seq,64,"\x1b[%dB", old_rows-rpos);
+            snprintf(seq,64,"\x1b[%dB", old_rows-rpos);/* LN_SP4 */
             abAppend(&ab,seq,strlen(seq));/* LN_SP4 */
         }
 

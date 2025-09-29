@@ -6,18 +6,18 @@ def compare_to_ideal(name, tool, result, ideal):
     print('Slice produced by', tool, 'for', name, 'is:', len(resultsAsSet))
     redundant_statements = list(resultsAsSet - idealAsSet)
     missing_statements = list(idealAsSet - resultsAsSet)
+    print('Missing statements:', len(missing_statements), missing_statements)
     print('Redundant statements:', len(redundant_statements))
-    print('Missing statements:', len(missing_statements))
 
 
 def linenoise():
     PROJECT = 'linenoise'
 
-    ideal = [658,653,652,650, 647, 646, 643, 639, 638, 636, 632, 632, 629, 628, 626, 619, 618, 616, 507, 506, 505, 503, 499, 498]
-    unravel = [658,652,650, 647, 646, 643, 639, 638, 636, 632, 632, 629, 628, 626, 619, 618, 616, 507, 505, 503, 499, 498]
-    llvm_slicer = [658,655,653,652,650, 647, 646, 643, 639, 638, 636, 632, 632, 629, 628, 626, 622, 620, 619, 618, 617, 616, 507, 505, 503, 499, 498]
-    frama_c = [658,652,650, 647, 646, 643, 639, 638, 636, 632, 632, 629, 628, 626, 619, 618, 616, 507, 505, 503, 499, 498]
-    clang = [498, 499, 503, 505, 506, 507, 508, 614, 616, 617, 618, 619, 620, 622, 626, 628, 629, 631, 632, 636, 638, 639, 640, 643, 646, 647, 650, 652, 653, 658]
+    ideal = [658,653,652,650, 647, 646, 643, 639, 638, 636, 632, 631, 629, 628, 626, 619, 618, 616, 508, 507, 506, 505, 503, 499, 498]
+    unravel = [658,652,650, 647, 646, 643, 639, 638, 636, 632, 631, 629, 628, 626, 619, 618, 616, 508, 507, 505, 503, 499, 498]
+    llvm_slicer = [658,655,653,652,650, 647, 646, 643, 639, 638, 636, 632, 631, 629, 628, 626, 622, 620, 619, 618, 617, 616, 508, 507, 505, 503, 499, 498]
+    frama_c = [658,652,650, 647, 646, 643, 639, 638, 636, 632, 631, 629, 628, 626, 619, 618, 616, 508, 507, 505, 503, 499, 498]
+    clang = [498, 499, 503, 505, 506, 507, 508, 616, 617, 618, 619, 620, 622, 626, 628, 629, 631, 632, 636, 638, 639, 643, 646, 647, 650, 652, 653, 658]
     compare_to_ideal(PROJECT, 'Unravel', unravel, ideal)
     compare_to_ideal(PROJECT, 'LLVM-Slicer', llvm_slicer, ideal)
     compare_to_ideal(PROJECT, 'Frama-C', frama_c, ideal)
